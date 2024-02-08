@@ -1,18 +1,18 @@
-BHO,bhopal,0,0
-IDR,indore,-1,0
-AMD,ahmedabad,-2,0
-STV,surat,-2,-1
-BOM,mumbai,-2,-2
-GOI,goa,-2,-3
-JAI,jaipur,-1,1
-NAG,nagpur,0,-1
-HYD,hyderabad,0,-2
-BLR,bangalore,0,-3
-MAA,chennai,1,-3
-GWL,gwalior,0,1
-IXD,alld,1,1
-PAT,patna,2,1
-CCU,kolkata,3,0
-LKO,lucknow,1,2
-DEL,delhi,0,2
-IXC,chennai,0,3
+BHO  bhopal 0  0
+IDR  indore -1  0
+AMD  ahmedabad -2  0
+STV  surat -2  -1
+BOM  mumbai -2  -2
+GOI  goa -2  -3
+JAI  jaipur -1  1
+NAG  nagpur 0  -1
+HYD  hyderabad 0  -2
+BLR  bangalore 0  -3
+MAA  chennai 1  -3
+GWL  gwalior 0  1
+IXD  prayagraj  1  1
+PAT  patna  2  1
+CCU  kolkata  3  0
+LKO  lucknow  1  2
+DEL  delhi  0  2
+IXC  chennai  0  3
