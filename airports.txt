@@ -15,4 +15,4 @@ PAT  patna  2  1
 CCU  kolkata  3  0
 LKO  lucknow  1  2
 DEL  delhi  0  2
-IXC  chennai  0  3
+IXC  chandigarh  0  3
