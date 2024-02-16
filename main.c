@@ -101,7 +101,6 @@ void log_in() {
                 printf("logged in!");
                 isloggedin=1;
                 strcpy(username,userch);
-                strcpy(username,userch);
 	        }
         }
         if(isloggedin!=1){
@@ -113,7 +112,7 @@ void log_in() {
 }
 int calculate(int mdiff,int ddiff,int xd,int yd){
     int price=0;
-    price=6000+30*((xd*xd)+(yd*yd))-1*((mdiff*30)+ddiff);
+    price=6000+30*((xd*xd)+(yd*yd))+1/((mdiff*30)+ddiff);
     return price;
 }
 void printticket(struct ticketing *t){
