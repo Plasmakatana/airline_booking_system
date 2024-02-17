@@ -145,7 +145,7 @@ void printticket(struct ticketing *t){
     printf("\033[1;31m");
     printf("\n|_______________|\n     TICKET   \n|_______________|\n");
     printf("\033[1;32m");
-    printf("\n|____SKIBIDI____|\n|____AIRWAYS____|\n");
+    printf("\n|_____AXIOM_____|\n|____AIRWAYS____|\n");
     printf("\033[1;33m");
     printf("|%s\n",name);
     printf("\033[1;34m");
