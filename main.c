@@ -5,6 +5,31 @@
 #include <time.h>
 #include <math.h>
 int isloggedin=0;
+void printlogo(void){
+    int c[11]={1,3,2,6,4,5,4,6,2,3,1};
+    for(int i=0;i<11;i++){
+        printf("\033[1;3%dm",c[i]);
+        for(int j=10;j>i;j--){
+            printf(" "); 
+        }
+        for(int k=0;k<2*i+1;k++){
+            if(i!=5){
+                if(k==(2*i)||k==(2*i+1)||k==(2*i-1)||k==i||k==i+1){
+                    printf("#");
+                }
+                else{
+                    printf(" ");
+                }            
+        }
+        else{
+            printf("#");
+        }
+        }
+        printf("\n");
+    }
+    printf("\033[1;35m");
+    
+}
 void delay(int milliseconds)
 {
     long pause;
@@ -192,15 +217,19 @@ void display_loading(void){
     for(int j=0;j<2;j++){
     delay(300);
     system("cls");
+    printlogo();
     printf("|");
     delay(300);
     system("cls");
+    printlogo();
     printf("/");
     delay(300);
     system("cls");
+    printlogo();
     printf("--");
     delay(300);
     system("cls");
+    printlogo();
     printf("\\");
     }
 
@@ -245,6 +274,7 @@ int main(){
     int input=0;
     display_loading();
     system("cls");
+    printlogo();
     printf("\n1.Login\n2.Signup\n3.Exit\n");
     while(isloggedin==0){
         color++;
@@ -277,6 +307,7 @@ int main(){
     out:
     display_loading();
     system("cls");
+    printlogo();
     color++;
     printf("\033[1;3%dm",color%8);
     printf("1.Retrieve previous details\n2.Book new ticket\n3.Exit\n");
@@ -286,6 +317,7 @@ int main(){
     printf("\033[1;3%dm",color%8);
     if(purpose==1){
         system("cls");
+        printlogo();
         show_previous(usrnm);
         printf("Returning after 20 seconds");
         delay(20000);
@@ -297,6 +329,7 @@ int main(){
     else if(purpose==2){
     display_loading();
     system("cls");
+    printlogo();
     color++;
     printf("\033[1;3%dm",color%8);
     printf("\nToday's Date: %d %3s\n",day,array[month-1]);
@@ -329,6 +362,7 @@ int main(){
     int daydiff=0;
     display_loading();
     system("cls");
+    printlogo();
     printf("DEPARTURE DATE:");
     printf("Enter day(1-30) :");
     scanf("%d",&choice);
@@ -349,6 +383,7 @@ int main(){
     int index_1,index_2;
     display_loading();
     system("cls");
+    printlogo();
     for(int i=0;i<18;i++){
         printf("\033[1;3%dm",i%8);
         printf("\n%d %s\n",i+1,info[i].name);
@@ -360,6 +395,7 @@ int main(){
     printf("\n________________________________________________________________\n");
     display_loading();
     system("cls");
+    printlogo();
     for(int i=0;i<18;i++){
         printf("\033[1;3%dm",i%8);
         printf("\n%d %s\n",i+1,info[i].name);
@@ -373,6 +409,7 @@ int main(){
     scanf("%[^\n]",&name);
     display_loading();
     system("cls");
+    printlogo();
     index_1--;
     index_2--;
     int xdiff=xcoords[index_2]-xcoords[index_1];
@@ -399,6 +436,7 @@ int main(){
     else{
         display_loading();
         system("cls");
+        printlogo();
         printf("\033[1;31m");
         printf("Invalid input");
         delay(5000);
