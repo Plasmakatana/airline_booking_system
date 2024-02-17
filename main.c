@@ -101,6 +101,7 @@ void log_in() {
                 printf("logged in!");
                 isloggedin=1;
                 strcpy(username,userch);
+                strcpy(username,userch);
 	        }
         }
         if(isloggedin!=1){
@@ -116,23 +117,35 @@ int calculate(int mdiff,int ddiff,int xd,int yd){
     return price;
 }
 void printticket(struct ticketing *t){
+    printf("\033[1;31m");
     printf("\n|_______________|\n     TICKET   \n|_______________|\n");
+    printf("\033[1;32m");
     printf("\n|____SKIBIDI____|\n|____AIRWAYS____|\n");
+    printf("\033[1;33m");
     printf("|%s\n",name);
+    printf("\033[1;34m");
     printf("|%s ------> %s|\n",t->start,t->end);
+    printf("\033[1;37m");
     printf("|%d/%d      %d:%d|",t->flightday,t->flightmonth,rand()%24,rand()%60);
+    printf("\033[1;36m");
     printf("\n|_______________|\n|_______________|\n");
 }
 void printinvoice(struct ticketing *inv){
+    printf("\033[1;31m");
     printf("\n\n\n\n______________________\n       INVOICE      \n|_____________________\n");
+    printf("\033[1;32m");
     printf("|%s\n",inv->name);
     printf("\n|______________________\n");
+    printf("\033[1;33m");
     printf("|%s\n",name);
     printf("\n|______________________\n");
+    printf("\033[1;34m");
     printf("|%s TO %s\n",inv->startname,inv->endname);
     printf("\n|______________________\n");
+    printf("\033[1;37m");
     printf("|Amount to be Paid: %d\n",inv->flightprice);
     printf("\n|______________________\n");
+    printf("\033[1;36m");
     printf("|Date of Departure: %d/%d\n",inv->flightday,inv->flightmonth);
     printf("\n|______________________\n");
 }
@@ -194,6 +207,8 @@ void display_loading(void){
 }
 
 int main(){
+    int color=4;
+    printf("\033[1;3%dm",color);
     char t_b;
     int purpose=0;
     char *array[]={"jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"};
@@ -212,6 +227,7 @@ int main(){
     rewind(fptr);
     int index=0;
     if (NULL == fptr) {
+        printf("\033[1;31m");
         printf("airports file can't be opened \n");
     }
     else{
@@ -231,11 +247,14 @@ int main(){
     system("cls");
     printf("\n1.Login\n2.Signup\n3.Exit\n");
     while(isloggedin==0){
+        color++;
+        printf("\033[1;3%dm",color%8);
         printf("Enter your choice: ");
         scanf("%d",&input);
     if(input==1){
         log_in();
         if (isloggedin!=1){
+            printf("\033[1;31m");
             printf("\nwrong username or password please signup or recheck\n");
         }
         else{
@@ -251,15 +270,20 @@ int main(){
         goto out;
     }
     else{
+        printf("\033[1;31m");
         printf("wrong input");
     }
     }
     out:
     display_loading();
     system("cls");
+    color++;
+    printf("\033[1;3%dm",color%8);
     printf("1.Retrieve previous details\n2.Book new ticket\n3.Exit\n");
     printf("Enter choice:");
     scanf("%d",&purpose);
+    color++;
+    printf("\033[1;3%dm",color%8);
     if(purpose==1){
         system("cls");
         show_previous(usrnm);
@@ -273,14 +297,20 @@ int main(){
     else if(purpose==2){
     display_loading();
     system("cls");
+    color++;
+    printf("\033[1;3%dm",color%8);
     printf("\nToday's Date: %d %3s\n",day,array[month-1]);
     printf("\n________________________________________________________________\n");
     int choice;
-    
+    color++;
+    printf("\033[1;3%dm",color%8);
     printf("DEPARTURE DATE:\n");
     for(int i=0;i<12;i++){
+        printf("\033[1;3%dm",i%8);
         printf("%d %s\n",i+1,array[i]);
     }
+    color++;
+    printf("\033[1;3%dm",color%8);
     struct ticketing ticket;
     struct ticketing invoice;
     printf("Select month: \n");
@@ -320,16 +350,22 @@ int main(){
     display_loading();
     system("cls");
     for(int i=0;i<18;i++){
+        printf("\033[1;3%dm",i%8);
         printf("\n%d %s\n",i+1,info[i].name);
-    }   
+    }
+    color++;
+    printf("\033[1;3%dm",color%8);   
     printf("Enter Starting City :");
     scanf("%d",&index_1);
     printf("\n________________________________________________________________\n");
     display_loading();
     system("cls");
     for(int i=0;i<18;i++){
+        printf("\033[1;3%dm",i%8);
         printf("\n%d %s\n",i+1,info[i].name);
     }
+    color++;
+    printf("\033[1;3%dm",color%8);
     printf("Enter Destination :");
     scanf("%d",&index_2);
     printf("\nEnter your Full Name: ");
@@ -356,14 +392,19 @@ int main(){
     scanf("%c",&t_b);
     delay(20000);
     display_loading();
+    color++;
+    printf("\033[1;3%dm",color%8);
     goto out;
     }
     else{
         display_loading();
         system("cls");
+        printf("\033[1;31m");
         printf("Invalid input");
         delay(5000);
         display_loading();
     }
+    color++;
+    printf("\033[1;3%dm",color%8);
     return 0;
 }
