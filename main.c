@@ -306,7 +306,7 @@ int main(){
     }
     }
     out:
-    //delay(2000);
+    delay(2000);
     display_loading();
     system("cls");
     printlogo();
