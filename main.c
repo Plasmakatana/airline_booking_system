@@ -5,6 +5,7 @@
 #include <time.h>
 #include <math.h>
 int isloggedin=0;
+char interact;
 void printlogo(void){
     int c[11]={1,3,2,6,4,5,4,6,2,3,1};
     for(int i=0;i<11;i++){
@@ -305,7 +306,7 @@ int main(){
     }
     }
     out:
-    delay(2000);
+    //delay(2000);
     display_loading();
     system("cls");
     printlogo();
@@ -321,7 +322,7 @@ int main(){
         printlogo();
         show_previous(usrnm);
         printf("Returning after 20 seconds");
-        delay(20000);
+        getch();
         goto out;
     }
     else if(purpose==3){
@@ -426,9 +427,7 @@ int main(){
     printticket(&ticket);
     printinvoice(&ticket);
     ticket_to_file(&ticket);
-    printf("\nreturning in 20 seconds\n");
-    scanf("%c",&t_b);
-    delay(20000);
+    getch();
     display_loading();
     color++;
     printf("\033[1;3%dm",color%8);
