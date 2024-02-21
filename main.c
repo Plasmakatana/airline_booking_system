@@ -138,7 +138,7 @@ void log_in() {
 }
 int calculate(int mdiff,int ddiff,int xd,int yd){
     int price=0;
-    price=6000+30*((xd*xd)+(yd*yd))+10000/((mdiff*30)+ddiff);
+    price=6000+300*((xd*xd)+(yd*yd))+10000/((mdiff*30)+ddiff);
     return price;
 }
 void printticket(struct ticketing *t){
@@ -218,19 +218,19 @@ void display_loading(void){
     delay(300);
     system("cls");
     printlogo();
-    printf("|");
+    printf("\n|\t\t|\t\t|\n\n");
     delay(300);
     system("cls");
     printlogo();
-    printf("/");
+    printf("\n/\t\t/\t\t/\n\n");
     delay(300);
     system("cls");
     printlogo();
-    printf("--");
+    printf("\n--\t\t--\t\t--\n\n");
     delay(300);
     system("cls");
     printlogo();
-    printf("\\");
+    printf("\n\\\t\t\\\t\t\\\n\n");
     }
 
 }
@@ -305,6 +305,7 @@ int main(){
     }
     }
     out:
+    delay(2000);
     display_loading();
     system("cls");
     printlogo();
