@@ -127,11 +127,11 @@ void log_in() {
                 printf("logged in!");
                 isloggedin=1;
                 strcpy(username,userch);
-                strcpy(username,userch);
 	        }
         }
         if(isloggedin!=1){
         printf("wrong login username or password\nor does not exist\nwrong login username or password\nor does not exist\n");
+
 		}
     }
     fclose(fp);
