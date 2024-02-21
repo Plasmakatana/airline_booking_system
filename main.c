@@ -276,7 +276,15 @@ int main(){
     display_loading();
     system("cls");
     printlogo();
-    printf("\n1.Login\n2.Signup\n3.Exit\n");
+    color++;
+    printf("\033[1;3%dm",color%8);
+    printf("\n1.Login\n");
+    color++;
+    printf("\033[1;3%dm",color%8);
+    printf("\n2.Signup\n");
+    color++;
+    printf("\033[1;3%dm",color%8);
+    printf("\n3.Exit\n");
     while(isloggedin==0){
         color++;
         printf("\033[1;3%dm",color%8);
@@ -312,7 +320,15 @@ int main(){
     printlogo();
     color++;
     printf("\033[1;3%dm",color%8);
-    printf("1.Retrieve previous details\n2.Book new ticket\n3.Exit\n");
+    printf("\n1.Retrieve previous details\n");
+    color++;
+    printf("\033[1;3%dm",color%8);
+    printf("2.Book new ticket\n");
+    color++;
+    printf("\033[1;3%dm",color%8);
+    printf("3.Exit\n");
+    color++;
+    printf("\033[1;3%dm",color%8);
     printf("Enter choice:");
     scanf("%d",&purpose);
     color++;
@@ -361,23 +377,24 @@ int main(){
     //    printf("\n%s %s %d %d\n",info[i].code,info[i].name,info[i].xc,info[i].yc);
     //}
     int daydiff=0;
+    checkdate:
     display_loading();
     system("cls");
     printlogo();
     printf("DEPARTURE DATE:");
     printf("Enter day(1-30) :");
     scanf("%d",&choice);
-    checkdate:
     if(choice<=31){
-    if(choice>=day){
-        daydiff=choice-day;
-    }
-    else{
-        daydiff=30-choice+day;
-    }
+        if(choice>=day){
+            daydiff=choice-day;
+        }
+        else{
+            daydiff=30-choice+day;
+        }
     }
     else{
         printf("Enter valid date!");
+        delay(2000);
         goto checkdate;
     }
     ticket.flightday=choice;
