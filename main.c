@@ -321,7 +321,6 @@ int main(){
         system("cls");
         printlogo();
         show_previous(usrnm);
-        printf("Returning after 20 seconds");
         getch();
         goto out;
     }
