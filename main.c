@@ -9,13 +9,14 @@ char interact;
 void printlogo(void){
     int c[11]={1,3,2,6,4,5,4,6,2,3,1};
     for(int i=0;i<11;i++){
-        printf("\033[1;3%dm",c[i]);
+        //printf("\033[1;3%dm",c[i]);
         for(int j=10;j>i;j--){
             printf(" "); 
         }
         for(int k=0;k<2*i+1;k++){
             if(i!=5){
                 if(k==(2*i)||k==(2*i+1)||k==(2*i-1)||k==i||k==i+1){
+                    printf("\033[1;3%dm",c[k]);
                     printf("#");
                 }
                 else{
@@ -23,6 +24,7 @@ void printlogo(void){
                 }            
         }
         else{
+            printf("\033[1;3%dm",c[k]);
             printf("#");
         }
         }
@@ -72,9 +74,11 @@ void sign_up(void) {
     char user[20],pass[20];
 	char temp;
     int counter=0;
+    printf("\033[1;35m");
 	printf("enter username: ");
 	scanf("%c",&temp);
-	scanf("%[^\n]s",&user);       
+	scanf("%[^\n]s",&user);      
+    printf("\033[1;34m"); 
     printf("enter password: ");
 	scanf("%c",&temp);
 	scanf("%[^\n]s",&pass);
@@ -83,12 +87,14 @@ void sign_up(void) {
     while(!feof(fp)){
         fscanf(fp,"%s %s\n",userch,passch);
         if(strcmp(user,userch)==0){
+            printf("\033[1;31m");
             printf("user already exists,Please login");
             counter++;
         }
     }
  	rewind(fp);
     if (NULL == fp) {
+        printf("\033[1;31m");
     	printf("file can't be opened \n");
     	exit(1);
     }
@@ -97,6 +103,9 @@ void sign_up(void) {
         if(counter==0){
             fprintf(fp,"%s %s\n",user,pass);
 	    }
+        printf("\033[1;36m");
+        printf("Logged in!");
+        delay(300);
     }
 	fclose(fp);
     strcpy(usrnm,user);
@@ -106,15 +115,18 @@ void log_in() {
     FILE* fp;
     char user[20],userch[20],pass[20],passch[20];
     char temp;
+    printf("\033[1;35m");
     printf("Enter username: ");
     scanf("%c",&temp);
-    scanf("%[^\n]", &user);    
+    scanf("%[^\n]", &user);
+    printf("\033[1;34m");    
     printf("Enter password: "); 
     scanf("%c",&temp);
     scanf("%[^\n]", &pass);
     fp = fopen("users.txt", "r");
     rewind(fp);
     if (NULL == fp) {
+        printf("\033[1;31m");
         printf("file can't be opened \n");
     }
     else
@@ -124,12 +136,14 @@ void log_in() {
             fscanf(fp,"%s %s\n",userch,passch);
             if(strcmp(user,userch)==0&&strcmp(pass,passch)==0)
             {
+                printf("\033[1;36m");
                 printf("logged in!");
                 isloggedin=1;
                 strcpy(username,userch);
 	        }
         }
         if(isloggedin!=1){
+        printf("\033[1;31m");
         printf("wrong login username or password\nor does not exist\nwrong login username or password\nor does not exist\n");
 
 		}
@@ -194,7 +208,7 @@ void ticket_to_file(struct ticketing *t){
 
 void show_previous(char f_usrnm[20]){
     char startname[20],endname[20];
-    int flightday,flightmonth,flightprice;
+    int flightday,flightmonth,flightprice,clr=1;
     char userch[20];
     FILE* fp;
     fp = fopen("tickets.txt", "r");
@@ -207,7 +221,10 @@ void show_previous(char f_usrnm[20]){
         while(!feof(fp)){
 			fscanf(fp,"%s %s %s %d %d %d\n",userch,startname,endname,&flightday,&flightmonth,&flightprice);
             if(strcmp(f_usrnm,userch)==0){
-                printf("%s,%s to %s,on %d/%d,Rs. %d\n",userch,startname,endname,flightday,flightmonth,flightprice);
+                printf("\033[1;3%dm",clr%8+1);
+                printf("\n||%10s   ||%10s to %10s   ||on %3d/%3d   ||Rs. %6d||\n",userch,startname,endname,flightday,flightmonth,flightprice);
+                printf("--------------------------------------------------------------------------");
+                clr++;
             }
         }
 
@@ -277,17 +294,17 @@ int main(){
     system("cls");
     printlogo();
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("\n1.Login\n");
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("\n2.Signup\n");
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("\n3.Exit\n");
     while(isloggedin==0){
         color++;
-        printf("\033[1;3%dm",color%8);
+        printf("\033[1;3%dm",color%8+1);
         printf("Enter your choice: ");
         scanf("%d",&input);
     if(input==1){
@@ -319,20 +336,20 @@ int main(){
     system("cls");
     printlogo();
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("\n1.Retrieve previous details\n");
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("2.Book new ticket\n");
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("3.Exit\n");
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("Enter choice:");
     scanf("%d",&purpose);
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     if(purpose==1){
         system("cls");
         printlogo();
@@ -348,19 +365,19 @@ int main(){
     system("cls");
     printlogo();
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("\nToday's Date: %d %3s\n",day,array[month-1]);
     printf("\n________________________________________________________________\n");
     int choice;
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("DEPARTURE DATE:\n");
     for(int i=0;i<12;i++){
-        printf("\033[1;3%dm",i%8);
+        printf("\033[1;3%dm",i%8+1);
         printf("%d %s\n",i+1,array[i]);
     }
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     struct ticketing ticket;
     struct ticketing invoice;
     printf("Select month: \n");
@@ -407,7 +424,7 @@ int main(){
         printf("\n%d %s\n",i+1,info[i].name);
     }
     color++;
-    printf("\033[1;3%dm",color%8);   
+    printf("\033[1;3%dm",color%8+1);   
     printf("Enter Starting City :");
     scanf("%d",&index_1);
     printf("\n________________________________________________________________\n");
@@ -415,11 +432,11 @@ int main(){
     system("cls");
     printlogo();
     for(int i=0;i<18;i++){
-        printf("\033[1;3%dm",i%8);
+        printf("\033[1;3%dm",i%8+1);
         printf("\n%d %s\n",i+1,info[i].name);
     }
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     printf("Enter Destination :");
     scanf("%d",&index_2);
     printf("\nEnter your Full Name: ");
@@ -446,7 +463,7 @@ int main(){
     getch();
     display_loading();
     color++;
-    printf("\033[1;3%dm",color%8);
+    printf("\033[1;3%dm",color%8+1);
     goto out;
     }
     else{
